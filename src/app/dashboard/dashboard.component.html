@@ -1,11 +1,6 @@
-<p>
-  dashboard works!
-</p>
-
-{{cpu|json}}
-<hr>
-{{mem| json}}
-<hr>
-{{cluster1|json}}
-<hr>
-{{cluster2|json}}
+<app-metric
+  [used]="cpu.used"
+  [available]="cpu.available"
+  [title]="CPU"
+  [description]="'utilization of CPU cores'"
+></app-metric>
