@@ -50,8 +50,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private randomNode(i: number): Node{
     const node = {
       name: 'Node' + i,
-      cpu: {available: 16, used: this.randomInterger(0.16) },
-      mem: {available: 64, used: this.randomInterger(0.64) }
+      cpu: {available: 16, used: this.randomInterger(0, 16) },
+      mem: {available: 64, used: this.randomInterger(0, 64) }
     };
     this.cpu.used += node.cpu.used;
     this.cpu.available += node.cpu.available;
@@ -61,6 +61,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   private randomInterger(min: number = 0, max: number = 100): number {
-    return Math.floor(Math.random() * max) + 1;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;  // The maximum is inclusive and the minimum is inclusive
   }
 }
